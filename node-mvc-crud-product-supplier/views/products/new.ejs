@@ -1,0 +1,29 @@
+<%- include("../partials/header", { title: "New Product" }) %>
+
+    <h2 class="mb-3">Add New Product</h2>
+
+    <form action="/products" method="POST" class="card p-4 shadow-sm">
+        <div class="mb-3">
+            <label for="name" class="form-label">Product Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" id="price" name="price" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="supplier" class="form-label">Supplier</label>
+            <select id="supplier" name="supplier" class="form-select">
+      <% suppliers.forEach(supplier => { %>
+        <option value="<%= supplier._id %>"><%= supplier.name %></option>
+      <% }) %>
+    </select>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
+        <a href="/products" class="btn btn-secondary">Cancel</a>
+    </form>
+
+    <%- include("../partials/footer") %>
